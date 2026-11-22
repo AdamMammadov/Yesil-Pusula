@@ -7,11 +7,13 @@
 *{box-sizing:border-box}
 html,body{margin:0}
 body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.45}
-.top{background:linear-gradient(120deg,var(--navy2),var(--navy) 60%,#24506f);color:#fff;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:14px;min-width:0}
+.top{background:linear-gradient(120deg,var(--navy2),var(--navy) 60%,#24506f);color:#fff;padding:12px 24px;display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:18px}
+.brand{display:flex;align-items:center;gap:14px;min-width:0;color:#fff;text-decoration:none}
+.brand>div{min-width:0}
+.brand:hover h1{opacity:.92}
 .logo{width:44px;height:44px;flex:none}
-.top h1{margin:0;font-size:21px;font-weight:700;letter-spacing:.2px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.top p{margin:2px 0 0;font-size:13px;opacity:.85}
+.top h1{margin:0;font-size:21px;font-weight:700;letter-spacing:.2px;display:flex;align-items:center;gap:10px;white-space:nowrap}
+.top p{margin:2px 0 0;font-size:13px;opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .badge{font-size:11.5px;font-weight:600;background:var(--mint);color:#0d2a1d;padding:2px 8px;border-radius:20px}
 .lang{display:flex;gap:6px}
 .lang button{background:transparent;border:1px solid rgba(255,255,255,.45);color:#fff;padding:6px 11px;border-radius:7px;cursor:pointer;font-size:13px;font-weight:600}
@@ -49,8 +51,8 @@ button.primary{background:var(--teal);color:#fff;border:0;border-radius:9px;padd
 button.primary:hover{background:#236d7a}
 button.primary.narrow{width:auto;padding:10px 22px;margin-top:12px}
 button.ghost{background:#fff;color:var(--navy);border:1px solid #b9c6d3;border-radius:9px;padding:9px;font-size:13.5px;font-weight:600;cursor:pointer}
-.tabs{display:flex;gap:4px;border-bottom:2px solid var(--line);margin-bottom:14px;overflow-x:auto}
-.tabs button{background:none;border:0;padding:10px 14px;font-size:14px;font-weight:600;color:var(--mut);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap}
+.tabs{display:flex;flex-wrap:wrap;gap:2px 4px;border-bottom:2px solid var(--line);margin-bottom:14px}
+.tabs button{background:none;border:0;padding:9px 12px;font-size:14px;font-weight:600;color:var(--mut);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap}
 .tabs button.on{color:var(--navy);border-bottom-color:var(--teal)}
 .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:14px}
 .card h2{font-size:14px;margin:0 0 12px;color:var(--navy);text-transform:uppercase;letter-spacing:.5px}
@@ -108,12 +110,13 @@ table.xtable tr.sec td{background:#f1f5f9;color:var(--navy);font-weight:700;font
 
 /* ---------- v4: gezinme, ana sayfa, paneller ---------- */
 .top{position:sticky;top:0;z-index:5}
-.mainnav{display:flex;gap:4px;flex-wrap:wrap}
-.mainnav a{color:#dbe6f0;text-decoration:none;font-size:14px;font-weight:600;padding:8px 12px;border-radius:8px}
+.mainnav{display:flex;gap:2px;flex-wrap:nowrap}
+.mainnav a{color:#dbe6f0;text-decoration:none;font-size:14px;font-weight:600;padding:8px 11px;border-radius:8px;white-space:nowrap}
 .mainnav a:hover{background:rgba(255,255,255,.08);color:#fff}
 .mainnav a.on{background:rgba(255,255,255,.16);color:#fff}
-@media(max-width:1100px){.top p{display:none}}
-@media(max-width:760px){.mainnav{order:3;width:100%;overflow-x:auto;flex-wrap:nowrap}.mainnav a{white-space:nowrap;padding:7px 10px;font-size:13px}}
+@media(max-width:1360px){.top p{display:none}}
+@media(max-width:1000px){.top{grid-template-columns:minmax(0,1fr) auto}.mainnav{grid-column:1/-1;grid-row:2;justify-content:flex-start;flex-wrap:wrap}}
+@media(max-width:760px){.top{padding:10px 14px;gap:8px 10px}.mainnav a{padding:6px 9px;font-size:13px}.lang button{padding:5px 8px;font-size:12px}.logo{width:36px;height:36px}.top h1{font-size:18px}}
 .wrap{max-width:1240px;margin:0 auto;padding:20px 24px}
 @media(max-width:760px){.wrap{padding:16px}}
 .hero{background:radial-gradient(1200px 500px at 85% -10%,#2f6f86 0%,transparent 60%),linear-gradient(135deg,#16304f,#1F3A5F 55%,#1d4a5c);color:#fff}

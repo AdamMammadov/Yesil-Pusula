@@ -59,7 +59,7 @@
       law_col: 'Yürürlükte', prop_col: 'COM(2026) 616 önerisi'
     },
     az: {
-      nav_home: 'Ana səhifə', nav_firm: 'Şirkət paneli', nav_osb: 'Sənaye zonası paneli', nav_method: 'Metodologiya',
+      nav_home: 'Ana səhifə', nav_firm: 'Şirkət', nav_osb: 'Zona paneli', nav_method: 'Metodologiya',
       h_eyebrow: 'Türk Forum 2026 · Mühəndislik kateqoriyası finalçısı',
       h_title: 'Hesab-fakturadan Aİ hesabatına: KOBİ-lər üçün karbon kompası',
       h_lead: 'Aİ-yə polad, alüminium, sement və gübrə ixrac edən şirkətlər 2026-dan etibarən məhsul başına emissiyalarını sənədləşdirməlidir. Məlumat təqdim edə bilməyən şirkət Aİ-nin yüksək standart dəyərləri ilə ödəyir. Yeşil Pusula elektrik və yanacaq hesablarından yerləşdirilmiş emissiyanı hesablayır, ödəniləcək CBAM xərcini göstərir, azaltma yol xəritəsi qurur və Aİ alıcısına göndəriləcək məlumat faylını hazırlayır.',
@@ -116,7 +116,7 @@
       law_col: 'Qüvvədə', prop_col: 'COM(2026) 616 təklifi'
     },
     kk: {
-      nav_home: 'Басты бет', nav_firm: 'Компания панелі', nav_osb: 'Индустриялық аймақ панелі', nav_method: 'Әдістеме',
+      nav_home: 'Басты бет', nav_firm: 'Компания', nav_osb: 'Аймақ панелі', nav_method: 'Әдістеме',
       h_eyebrow: 'Türk Forum 2026 · Инженерия санатының финалисі',
       h_title: 'Шоттан ЕО есебіне дейін: ШОБ-қа арналған көміртек компасы',
       h_lead: 'ЕО-ға болат, алюминий, цемент және тыңайтқыш экспорттайтын компаниялар 2026 жылдан бастап өнім бірлігіне шаққандағы шығарындыларын құжаттауға міндетті. Деректерді ұсына алмаған компания ЕО-ның жоғары әдепкі мәндерімен төлейді. Yeşil Pusula электр және отын шоттарынан кірістірілген шығарындыны есептейді, төленетін CBAM шығынын көрсетеді, азайту жол картасын жасайды және ЕО сатып алушысына жіберілетін деректер файлын дайындайды.',
@@ -173,7 +173,7 @@
       law_col: 'Қолданыста', prop_col: 'COM(2026) 616 ұсынысы'
     },
     en: {
-      nav_home: 'Home', nav_firm: 'Company dashboard', nav_osb: 'Industrial zone dashboard', nav_method: 'Method',
+      nav_home: 'Home', nav_firm: 'Company', nav_osb: 'Zone dashboard', nav_method: 'Method',
       h_eyebrow: 'Türk Forum 2026 · Finalist, engineering category',
       h_title: 'From invoice to EU report: a carbon compass for SMEs',
       h_lead: 'From 2026, companies exporting steel, aluminium, cement and fertilisers to the EU must document the emissions embedded in each product. Those that cannot provide data pay on the EU’s high default values. Yeşil Pusula calculates embedded emissions from electricity and fuel invoices, shows the CBAM cost due, builds a reduction roadmap and prepares the data file for the EU buyer.',
