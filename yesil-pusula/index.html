@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yeşil Pusula</title>
+<meta name="description" content="Yeşil Pusula: Türk Dünyası KOBİ'leri için ortak karbon ve enerji verimliliği platformu">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='29' fill='%231F3A5F'/%3E%3Cpath d='M32 10 L40 32 L32 54 L24 32 Z' fill='%23fff'/%3E%3Cpath d='M32 10 L40 32 L24 32 Z' fill='%233DBE8B'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <svg class="logo" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29" fill="#fff" opacity=".12"/><circle cx="32" cy="32" r="29" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="2"/><path d="M32 9 L40 32 L32 55 L24 32 Z" fill="#fff"/><path d="M32 9 L40 32 L24 32 Z" fill="#3DBE8B"/><circle cx="32" cy="32" r="3" fill="#1F3A5F"/></svg>
+    <div>
+      <h1>Yeşil Pusula <span class="badge" data-i18n="badge"></span></h1>
+      <p data-i18n="subtitle"></p>
+    </div>
+  </div>
+  <nav class="mainnav" aria-label="Menü">
+    <a href="#home" data-view="home" data-i18n="nav_home"></a><a href="#firma" data-view="firm" data-i18n="nav_firm"></a><a href="#osb" data-view="osb" data-i18n="nav_osb"></a><a href="#yontem" data-view="method" data-i18n="nav_method"></a>
+  </nav>
+  <div class="lang" role="group" aria-label="Dil / Language">
+    <button type="button" data-lang="tr">TR</button><button type="button" data-lang="az">AZ</button><button type="button" data-lang="kk">KK</button><button type="button" data-lang="en">EN</button>
+  </div>
+</header>
+<section class="view" id="view-home">
+  <div class="hero">
+    <div class="hero-in">
+      <div class="hero-txt">
+        <div class="eyebrow" data-i18n="h_eyebrow"></div>
+        <h2 data-i18n="h_title"></h2>
+        <p class="lead" data-i18n="h_lead"></p>
+        <div class="cta">
+          <a class="btn primary" href="#firma" data-i18n="h_cta1"></a>
+          <a class="btn light" href="#osb" data-i18n="h_cta2"></a>
+          <a class="btn link" href="#yontem" data-i18n="h_cta3"></a>
+        </div>
+      </div>
+      <div class="hero-card" id="heroCard"></div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><div class="sv" data-i18n="st1_v"></div><div class="sl" data-i18n="st1_l"></div><div class="ss" data-i18n="st1_s"></div></div>
+      <div class="stat"><div class="sv" data-i18n="st2_v"></div><div class="sl" data-i18n="st2_l"></div><div class="ss" data-i18n="st2_s"></div></div>
+      <div class="stat"><div class="sv" data-i18n="st3_v"></div><div class="sl" data-i18n="st3_l"></div><div class="ss" data-i18n="st3_s"></div></div>
+      <div class="stat"><div class="sv" data-i18n="st4_v"></div><div class="sl" data-i18n="st4_l"></div><div class="ss" data-i18n="st4_s"></div></div>
+    </div>
+    <h3 class="sec-t" data-i18n="how_title"></h3>
+    <div class="steps">
+      <div class="step"><div class="ic">1</div><h4 data-i18n="step1_t"></h4><p data-i18n="step1_d"></p></div>
+      <div class="step"><div class="ic">2</div><h4 data-i18n="step2_t"></h4><p data-i18n="step2_d"></p></div>
+      <div class="step"><div class="ic">3</div><h4 data-i18n="step3_t"></h4><p data-i18n="step3_d"></p></div>
+      <div class="step"><div class="ic">4</div><h4 data-i18n="step4_t"></h4><p data-i18n="step4_d"></p></div>
+    </div>
+    <h3 class="sec-t" data-i18n="who_title"></h3>
+    <div class="who">
+      <div class="whoc"><h4 data-i18n="who1_t"></h4><p data-i18n="who1_d"></p><a href="#firma" class="more" data-i18n="nav_firm"></a></div>
+      <div class="whoc"><h4 data-i18n="who2_t"></h4><p data-i18n="who2_d"></p><a href="#osb" class="more" data-i18n="nav_osb"></a></div>
+      <div class="whoc"><h4 data-i18n="who3_t"></h4><p data-i18n="who3_d"></p><a href="#yontem" class="more" data-i18n="nav_method"></a></div>
+    </div>
+    <div class="card mapcard">
+      <div class="maptxt"><h3 class="sec-t" style="margin-top:0" data-i18n="map_title"></h3><p data-i18n="map_d"></p><div id="gridChips" class="chips"></div></div>
+      <div id="mapHome" class="map"></div>
+    </div>
+    <h3 class="sec-t" data-i18n="trust_title"></h3>
+    <div class="trust">
+      <div><b>✓</b><span data-i18n="tr1"></span></div><div><b>✓</b><span data-i18n="tr2"></span></div><div><b>✓</b><span data-i18n="tr3"></span></div><div><b>✓</b><span data-i18n="tr4"></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="view" id="view-firm" hidden>
+<div class="banner" data-i18n="banner"></div>
+
+<main class="layout">
+  <aside class="panel">
+    <form id="f" novalidate autocomplete="off">
+      <fieldset>
+        <legend data-i18n="s_facility"></legend>
+        <label for="company" data-i18n="company"></label>
+        <input id="company" type="text">
+        <div class="row2">
+          <div><label for="country" data-i18n="country"></label><select id="country"></select></div>
+          <div><label for="year" data-i18n="year"></label><select id="year"></select></div>
+        </div>
+        <label for="product" data-i18n="product"></label>
+        <select id="product"></select>
+        <div id="scopeWrap" hidden><label for="scope" data-i18n="scope"></label><select id="scope"></select></div>
+        <div class="row2">
+          <div><label for="production_t" data-i18n="production"></label><div class="inp"><input id="production_t" type="number" min="0" step="any"><span>t</span></div></div>
+          <div><label for="export_t" data-i18n="export"></label><div class="inp"><input id="export_t" type="number" min="0" step="any"><span>t</span></div></div>
+        </div>
+        <label for="route" data-i18n="route"></label>
+        <select id="route"></select>
+      </fieldset>
+
+      <fieldset>
+        <legend data-i18n="s_energy"></legend>
+        <div class="erow"><label for="electricity_mwh" data-i18n="elec"></label><div class="inp"><input id="electricity_mwh" type="number" min="0" step="any"><span>MWh</span></div><select id="q_elec" class="q"></select></div>
+        <p class="hint" id="gridHint"></p>
+        <div class="erow"><label for="solar_mwh" data-i18n="solar_own"></label><div class="inp"><input id="solar_mwh" type="number" min="0" step="any"><span>MWh</span></div><span></span></div>
+        <div class="erow"><label for="gas_m3" data-i18n="gas"></label><div class="inp"><input id="gas_m3" type="number" min="0" step="any"><span>m³</span></div><select id="q_gas" class="q"></select></div>
+        <div class="erow"><label for="diesel_l" data-i18n="diesel"></label><div class="inp"><input id="diesel_l" type="number" min="0" step="any"><span>L</span></div><select id="q_diesel" class="q"></select></div>
+        <div class="erow"><label for="lpg_l" data-i18n="lpg"></label><div class="inp"><input id="lpg_l" type="number" min="0" step="any"><span>L</span></div><select id="q_lpg" class="q"></select></div>
+        <div class="erow"><label for="coal_t" data-i18n="coal"></label><div class="inp"><input id="coal_t" type="number" min="0" step="any"><span>t</span></div><select id="q_coal" class="q"></select></div>
+      </fieldset>
+
+      <fieldset>
+        <legend data-i18n="s_pre"></legend>
+        <div class="row2">
+          <div><label for="precursor_t" data-i18n="pre_qty"></label><div class="inp"><input id="precursor_t" type="number" min="0" step="any"><span>t</span></div></div>
+          <div><label for="precursor_int" data-i18n="pre_int"></label><div class="inp"><input id="precursor_int" type="number" min="0" step="any"><span>tCO2e/t</span></div></div>
+        </div>
+        <label for="q_pre" data-i18n="quality"></label><select id="q_pre"></select>
+      </fieldset>
+
+      <fieldset>
+        <legend data-i18n="s_cbam"></legend>
+        <label for="default_value" data-i18n="default_value"></label>
+        <div class="inp"><input id="default_value" type="number" min="0" step="any"><span>tCO2e/t</span></div>
+        <p class="hint" id="defHint"></p>
+        <div class="row2">
+          <div><label for="bench_actual" data-i18n="bench_actual"></label><div class="inp"><input id="bench_actual" type="number" min="0" step="any"><span>tCO2e/t</span></div></div>
+          <div><label for="price" data-i18n="price"></label><div class="inp"><input id="price" type="number" min="0" step="any"><span>€/tCO2e</span></div></div>
+        </div>
+      </fieldset>
+
+      <div class="actions">
+        <button type="submit" class="primary" data-i18n="btn_calc"></button>
+        <button type="button" class="ghost" id="demo" data-i18n="btn_demo"></button>
+        <button type="button" class="ghost" id="clear" data-i18n="btn_clear"></button>
+        <button type="button" class="ghost" id="pSave" data-i18n="p_save"></button>
+        <label class="ghost filebtn"><span data-i18n="p_open"></span><input type="file" id="pOpen" accept=".json,application/json" hidden></label>
+      </div>
+    </form>
+  </aside>
+
+  <section class="content">
+    <nav class="tabs" role="tablist">
+      <button type="button" role="tab" data-tab="res" data-i18n="tab_res"></button>
+      <button type="button" role="tab" data-tab="month" data-i18n="tab_month"></button>
+      <button type="button" role="tab" data-tab="roadmap" data-i18n="tab_roadmap"></button>
+      <button type="button" role="tab" data-tab="solar" data-i18n="tab_solar"></button>
+      <button type="button" role="tab" data-tab="bench" data-i18n="tab_bench"></button>
+      <button type="button" role="tab" data-tab="supplier" data-i18n="tab_supplier"></button>
+      <button type="button" role="tab" data-tab="report" data-i18n="tab_report"></button>
+    </nav>
+
+    <div class="tab" id="tab-res">
+      <div id="msgs"></div>
+      <div class="kpis">
+        <div class="kpi main"><div class="l" data-i18n="k_embedded"></div><div class="v" id="kEmb">-</div><div class="s" id="kRange"></div></div>
+        <div class="kpi"><div class="l" data-i18n="k_default"></div><div class="v" id="kDef">-</div><div class="s">tCO2e/t</div></div>
+        <div class="kpi good"><div class="l" data-i18n="k_saving"></div><div class="v" id="kSave">-</div><div class="s" id="kSaveT"></div></div>
+        <div class="kpi"><div class="l" data-i18n="k_footprint"></div><div class="v" id="kFoot">-</div><div class="s">tCO2e</div></div>
+      </div>
+      <div class="card">
+        <h2 data-i18n="cbam_title"></h2>
+        <div class="split">
+          <div class="tscroll"><table class="cmp" id="cmpTable"></table></div>
+          <div><h3 class="mini" data-i18n="chart_title"></h3><div id="chart"></div></div>
+        </div>
+        <p class="note" id="scopeNote"></p>
+        <p class="note" id="formula"></p>
+      </div>
+      <div class="card">
+        <div class="cardhead"><h2 data-i18n="proj_title"></h2><div class="ctl"><label for="projSched" data-i18n="proj_sched"></label><select id="projSched"></select></div></div>
+        <div id="projChart"></div>
+        <div id="projSum" class="projsum"></div>
+        <p class="note" data-i18n="proj_note"></p>
+      </div>
+      <div class="card">
+        <h2 data-i18n="breakdown"></h2>
+        <div class="tscroll"><table id="bdTable"></table></div>
+      </div>
+    </div>
+
+    <div class="tab" id="tab-month" hidden>
+      <div class="card">
+        <h2 data-i18n="m_title"></h2>
+        <p class="note" data-i18n="m_intro" style="margin:0 0 10px"></p>
+        <div class="mbar">
+          <button type="button" class="primary sm" id="mApply" data-i18n="m_apply"></button>
+          <button type="button" class="ghost" id="mTpl" data-i18n="m_tpl"></button>
+          <label class="ghost filebtn"><span data-i18n="m_upload"></span><input type="file" id="mFile" accept=".csv,.xlsx,.xls,text/csv" hidden></label>
+          <span id="mFilled" class="pill"></span>
+        </div>
+        <div id="mMsgs"></div>
+        <div class="tscroll"><table id="mTable" class="mtable"></table></div>
+      </div>
+    </div>
+
+    <div class="tab" id="tab-roadmap" hidden>
+      <div class="card">
+        <h2 data-i18n="rm_title"></h2>
+        <p class="note" data-i18n="rm_intro" style="margin:0 0 10px"></p>
+        <div class="row4">
+          <div><label for="rmGas" data-i18n="rm_gas"></label><div class="inp"><input id="rmGas" type="number" min="0" step="any" value="0.40"><span>€/m³</span></div></div>
+          <div><label for="rmElec" data-i18n="rm_elec"></label><div class="inp"><input id="rmElec" type="number" min="0" step="any" value="100"><span>€/MWh</span></div></div>
+          <div><label for="rmRate" data-i18n="rm_rate"></label><div class="inp"><input id="rmRate" type="number" min="0" step="any" value="8"><span>%</span></div></div>
+          <div><label for="rmGrowth" data-i18n="proj_growth"></label><div class="inp"><input id="rmGrowth" type="number" step="any" value="0"><span>%/yıl</span></div></div>
+        </div>
+        <div class="tscroll" style="margin-top:12px"><table id="rmTable" class="rmtable"></table></div>
+        <div id="rmSum" class="rmsum"></div>
+      </div>
+      <div class="split2">
+        <div class="card"><h2 data-i18n="macc_title"></h2><div id="maccChart"></div><p class="note" data-i18n="macc_note"></p></div>
+        <div class="card"><h2 data-i18n="proj_title"></h2><div id="projChart2"></div><div id="projSum2" class="projsum"></div></div>
+      </div>
+    </div>
+
+    <div class="tab" id="tab-solar" hidden>
+      <div class="card">
+        <h2 data-i18n="solar_title"></h2>
+        <div class="row4">
+          <div><label for="s_kwp" data-i18n="kwp"></label><div class="inp"><input id="s_kwp" type="number" min="0" step="any" value="400"><span>kWp</span></div></div>
+          <div><label for="s_yield" data-i18n="yield"></label><div class="inp"><input id="s_yield" type="number" min="0" step="any"><span>kWh/kWp</span></div></div>
+          <div><label for="s_capex" data-i18n="capex"></label><div class="inp"><input id="s_capex" type="number" min="0" step="any" value="650"><span>€/kWp</span></div></div>
+          <div><label for="s_price" data-i18n="eprice"></label><div class="inp"><input id="s_price" type="number" min="0" step="any" value="100"><span>€/MWh</span></div></div>
+        </div>
+        <div class="kpis small" id="solarOut"></div>
+        <p class="note" id="solarCbam"></p>
+        <p class="note" data-i18n="solar_note"></p>
+      </div>
+    </div>
+
+    <div class="tab" id="tab-bench" hidden>
+      <div class="card">
+        <h2 data-i18n="bench_title"></h2>
+        <div id="benchOut"></div>
+        <p class="note" id="benchMin"></p>
+        <p class="note" data-i18n="bench_demo"></p>
+      </div>
+    </div>
+
+    <div class="tab" id="tab-supplier" hidden>
+      <div class="card">
+        <h2 data-i18n="s_title"></h2>
+        <p class="note" data-i18n="s_intro" style="margin:0 0 10px"></p>
+        <div class="row4">
+          <div><label for="sSupplier" data-i18n="s_supplier"></label><input id="sSupplier" type="text" value="Örnek Çelik A.Ş."></div>
+          <div><label for="sPreCn" data-i18n="s_precn"></label><input id="sPreCn" type="text" value="7207"></div>
+          <div><label for="sContact" data-i18n="s_contact"></label><input id="sContact" type="text"></div>
+          <div><label for="sLang" data-i18n="s_lang"></label><select id="sLang"><option value="tr">Türkçe</option><option value="en">English</option></select></div>
+        </div>
+        <textarea id="sLetter" rows="22" readonly></textarea>
+        <div class="mbar"><button type="button" class="primary sm" id="sCopy" data-i18n="s_copy"></button><button type="button" class="ghost" id="sDl" data-i18n="s_download"></button></div>
+      </div>
+    </div>
+
+    <div class="tab" id="tab-report" hidden>
+      <div class="card">
+        <h2 data-i18n="x_title"></h2>
+        <p class="note" data-i18n="x_intro" style="margin:0 0 10px"></p>
+        <div class="row2"><div><label for="xAddress" data-i18n="x_address"></label><input id="xAddress" type="text" value="İvedik OSB, Ankara (örnek)"></div><div><label for="xContact" data-i18n="s_contact"></label><input id="xContact" type="text"></div></div>
+        <div class="mbar"><button type="button" class="primary sm" id="xXlsx" data-i18n="x_xlsx"></button><button type="button" class="ghost" id="xCsv" data-i18n="x_csv"></button></div>
+        <div class="tscroll"><table id="xTable" class="xtable"></table></div>
+      </div>
+      <div class="card report" id="report"></div>
+      <button type="button" class="primary narrow" id="print" data-i18n="btn_print"></button>
+    </div>
+
+    </div>
+  </section>
+</main>
+</section>
+
+<section class="view" id="view-osb" hidden>
+  <div class="wrap">
+    <div class="pagehead"><h2 data-i18n="osb_title"></h2><div class="ctl"><label for="osbYear" data-i18n="o_year"></label><select id="osbYear"></select></div></div>
+    <div class="banner inline" data-i18n="osb_demo"></div>
+    <div class="kpis" id="osbKpis"></div>
+    <div class="split2">
+      <div class="card"><h2 data-i18n="o_ready"></h2><div id="osbReady"></div></div>
+      <div class="card"><h2 data-i18n="o_action"></h2><div id="osbAction"></div></div>
+    </div>
+    <div class="card"><h2 data-i18n="o_rank"></h2><div class="tscroll"><table id="osbTable"></table></div></div>
+    <div class="card mapcard"><div class="maptxt"><h3 class="sec-t" style="margin-top:0" data-i18n="map_title"></h3><p data-i18n="map_d"></p></div><div id="mapOsb" class="map"></div></div>
+  </div>
+</section>
+
+<section class="view" id="view-method" hidden>
+  <div class="wrap">
+    <div class="pagehead"><h2 data-i18n="meth_title"></h2></div>
+    <div class="split2">
+      <div class="card formula"><h2 data-i18n="meth_f1"></h2><p data-i18n="meth_f1d"></p></div>
+      <div class="card formula"><h2 data-i18n="meth_f2"></h2><p data-i18n="meth_f2d"></p></div>
+      <div class="card formula"><h2 data-i18n="meth_f3"></h2><p data-i18n="meth_f3d"></p></div>
+      <div class="card formula"><h2 data-i18n="meth_f4"></h2><p data-i18n="meth_f4d"></p></div>
+    </div>
+    <div class="card"><h2 data-i18n="meth_sched"></h2><div class="tscroll"><table id="schedTable"></table></div></div>
+    <div class="card">
+      <h2 data-i18n="src_title"></h2>
+      <p class="ver" id="ver"></p>
+      <ol id="srcList" class="src"></ol>
+      <p class="note" data-i18n="src_assume"></p>
+    </div>
+    <div class="split2">
+      <div class="card"><h2 data-i18n="meth_tests"></h2><p class="note" data-i18n="meth_tests_d"></p></div>
+      <div class="card"><h2 data-i18n="meth_limits"></h2><p class="note" data-i18n="meth_limits_d"></p><h2 style="margin-top:14px" data-i18n="meth_next"></h2><p class="note" data-i18n="meth_next_d"></p></div>
+    </div>
+  </div>
+</section>
+<footer data-i18n="footer"></footer>
+
+<script src="js/data.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/i18n_v3.js"></script>
+<script src="js/i18n_v4.js"></script>
+<script src="vendor/xlsx.mini.min.js"></script>
+<script src="js/tools.js"></script>
+<script src="js/roadmap.js"></script>
+<script src="js/osb.js"></script>
+<script src="js/sha256.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/app.js"></script>
+<script src="js/app_v3.js"></script>
+<script src="js/app_v4.js"></script>
+</body>
+</html>
