@@ -72,8 +72,9 @@
     msgs = msgs.concat(ag.anomalies.map(function (a) {
       return '<div class="msg warn">' + esc(t('a_' + a.code, { m: mn[a.month - 1], d: a.dev !== undefined ? fmt(Math.abs(a.dev), 0) : '' })) + '</div>';
     }));
-    if (!msgs.length && ag.filled) msgs.push('<div class="msg" style="background:#e9f6ef;border:1px solid #bfe3cf;color:#1f6b4c">' + esc(t('m_ok')) + '</div>');
+    if (!msgs.length && ag.filled) msgs.push('<div class="msg ok">' + esc(t('m_ok')) + '</div>');
     $('mMsgs').innerHTML = msgs.join('');
+    if (window.YP_V5) window.YP_V5.renderReady();
     return ag;
   }
 
@@ -263,6 +264,7 @@
     renderMonthTable(); renderLetter(); renderEU();
   });
 
+  window.YP_V3 = { monthly: function () { return TL.aggregate(rows, factors()); } };
   window.YP_onRender = function () { renderLetter(); renderEU(); updateMonthly(); };
   window.YP_onLang = function () { renderMonthTable(); };
 

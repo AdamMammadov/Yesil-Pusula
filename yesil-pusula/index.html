@@ -6,68 +6,79 @@
 <title>Yeşil Pusula</title>
 <meta name="description" content="Yeşil Pusula: Türk Dünyası KOBİ'leri için ortak karbon ve enerji verimliliği platformu">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='29' fill='%231F3A5F'/%3E%3Cpath d='M32 10 L40 32 L32 54 L24 32 Z' fill='%23fff'/%3E%3Cpath d='M32 10 L40 32 L24 32 Z' fill='%233DBE8B'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/style.css">
+<script>try{var th=localStorage.getItem("yp_theme");document.documentElement.setAttribute("data-theme",th==="light"?"light":"dark")}catch(e){document.documentElement.setAttribute("data-theme","dark")}</script>
 </head>
 <body>
 <header class="top">
   <a class="brand" href="#home" aria-label="Yeşil Pusula">
-    <svg class="logo" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29" fill="#fff" opacity=".12"/><circle cx="32" cy="32" r="29" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="2"/><path d="M32 9 L40 32 L32 55 L24 32 Z" fill="#fff"/><path d="M32 9 L40 32 L24 32 Z" fill="#3DBE8B"/><circle cx="32" cy="32" r="3" fill="#1F3A5F"/></svg>
+    <svg class="logo" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29" fill="none" stroke="currentColor" stroke-opacity=".35" stroke-width="2"/><path d="M32 9 L40 32 L32 55 L24 32 Z" fill="currentColor" opacity=".9"/><path d="M32 9 L40 32 L24 32 Z" fill="#00D9A3"/><circle cx="32" cy="32" r="3" fill="var(--bg)"/></svg>
     <div>
       <h1>Yeşil Pusula <span class="badge" data-i18n="badge"></span></h1>
       <p data-i18n="subtitle"></p>
     </div>
   </a>
   <nav class="mainnav" aria-label="Menü">
-    <a href="#home" data-view="home" data-i18n="nav_home"></a><a href="#firma" data-view="firm" data-i18n="nav_firm"></a><a href="#osb" data-view="osb" data-i18n="nav_osb"></a><a href="#yontem" data-view="method" data-i18n="nav_method"></a>
+    <a href="#home" data-view="home"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h5v-6h4v6h5V9.5"/></svg><span data-i18n="nav_home"></span></a><a href="#firma" data-view="firm"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21V9l6-3v4l6-3v4l6-3v13z"/><path d="M7 17h2M11 17h2M15 17h2"/></svg><span data-i18n="nav_firm"></span></a><a href="#osb" data-view="osb"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span data-i18n="nav_osb"></span></a><a href="#yontem" data-view="method"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M8 7h7M8 11h5"/></svg><span data-i18n="nav_method"></span></a>
   </nav>
   <div class="lang" role="group" aria-label="Dil / Language">
     <button type="button" class="tourbtn" id="tourBtn"><svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg><span data-i18n="tour_btn"></span></button>
+    <button type="button" class="themebtn" id="themeBtn" aria-label="Tema"><svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></svg></button>
     <button type="button" data-lang="tr">TR</button><button type="button" data-lang="az">AZ</button><button type="button" data-lang="kk">KK</button><button type="button" data-lang="en">EN</button>
   </div>
 </header>
 <section class="view" id="view-home">
   <div class="hero">
+    <div class="hero-grid" aria-hidden="true"></div>
     <div class="hero-in">
       <div class="hero-txt">
-        <div class="eyebrow" data-i18n="h_eyebrow"></div>
+        <div class="eyebrow"><span class="dot"></span><span data-i18n="h_eyebrow"></span></div>
         <h2 data-i18n="h_title"></h2>
-        <p class="lead" data-i18n="h_lead"></p>
+        <p class="lead" data-i18n="h_lead2"></p>
         <div class="cta">
-          <a class="btn primary" href="#firma" data-i18n="h_cta1"></a>
-          <a class="btn light" href="#osb" data-i18n="h_cta2"></a>
-          <a class="btn link" href="#yontem" data-i18n="h_cta3"></a>
+          <a class="btn primary" href="#firma"><span data-i18n="h_cta_calc"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <button type="button" class="btn light" id="heroTour"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" fill="currentColor" stroke="none"/></svg><span data-i18n="h_cta_tour"></span></button>
         </div>
+        <ul class="hv"><li data-i18n="hv1"></li><li data-i18n="hv2"></li><li data-i18n="hv3"></li></ul>
       </div>
-      <div class="hero-card" id="heroCard"></div>
+      <div class="hcalc" id="heroCalc">
+        <div class="hcalc-h"><span data-i18n="hc_title"></span><span class="live"><i></i>LIVE</span></div>
+        <div class="seg" id="hcProd"><button type="button" data-v="7208" class="on">CN 7208</button><button type="button" data-v="7207">CN 7207</button></div>
+        <label class="rl"><span data-i18n="hc_export"></span><b id="hcExpV"></b></label>
+        <input type="range" id="hcExp" min="500" max="20000" step="100" value="4000">
+        <label class="rl"><span data-i18n="hc_int"></span><b id="hcIntV"></b></label>
+        <input type="range" id="hcInt" min="0.05" max="2.5" step="0.01" value="0.28">
+        <div class="seg sm" id="hcYear"><button type="button" data-v="2026" class="on">2026</button><button type="button" data-v="2028">2028</button><button type="button" data-v="2030">2030</button><button type="button" data-v="2034">2034</button></div>
+        <div class="hres">
+          <div class="hr d"><span data-i18n="hc_def"></span><b id="hcDef">-</b><i><em id="hcDefBar"></em></i></div>
+          <div class="hr a"><span data-i18n="hc_act"></span><b id="hcAct">-</b><i><em id="hcActBar"></em></i></div>
+        </div>
+        <div class="hsave"><span data-i18n="hc_save"></span><b id="hcSave">-</b></div>
+        <p class="hnote" data-i18n="hc_note"></p>
+        <a class="hgo" href="#firma"><span data-i18n="hc_go"></span> →</a>
+      </div>
     </div>
   </div>
   <div class="wrap">
     <div class="stats">
-      <div class="stat"><div class="sv" data-i18n="st1_v"></div><div class="sl" data-i18n="st1_l"></div><div class="ss" data-i18n="st1_s"></div></div>
-      <div class="stat"><div class="sv" data-i18n="st2_v"></div><div class="sl" data-i18n="st2_l"></div><div class="ss" data-i18n="st2_s"></div></div>
-      <div class="stat"><div class="sv" data-i18n="st3_v"></div><div class="sl" data-i18n="st3_l"></div><div class="ss" data-i18n="st3_s"></div></div>
-      <div class="stat"><div class="sv" data-i18n="st4_v"></div><div class="sl" data-i18n="st4_l"></div><div class="ss" data-i18n="st4_s"></div></div>
+      <div class="stat reveal"><div class="sv" data-i18n="st1_v"></div><div class="sl" data-i18n="st1_l"></div><div class="ss" data-i18n="st1_s"></div></div>
+      <div class="stat reveal"><div class="sv" data-i18n="st2_v"></div><div class="sl" data-i18n="st2_l"></div><div class="ss" data-i18n="st2_s"></div></div>
+      <div class="stat reveal"><div class="sv" data-i18n="st3_v"></div><div class="sl" data-i18n="st3_l"></div><div class="ss" data-i18n="st3_s"></div></div>
+      <div class="stat reveal"><div class="sv" data-i18n="st4_v"></div><div class="sl" data-i18n="st4_l"></div><div class="ss" data-i18n="st4_s"></div></div>
     </div>
-    <h3 class="sec-t" data-i18n="how_title"></h3>
-    <div class="steps">
-      <div class="step"><div class="ic">1</div><h4 data-i18n="step1_t"></h4><p data-i18n="step1_d"></p></div>
-      <div class="step"><div class="ic">2</div><h4 data-i18n="step2_t"></h4><p data-i18n="step2_d"></p></div>
-      <div class="step"><div class="ic">3</div><h4 data-i18n="step3_t"></h4><p data-i18n="step3_d"></p></div>
-      <div class="step"><div class="ic">4</div><h4 data-i18n="step4_t"></h4><p data-i18n="step4_d"></p></div>
-    </div>
-    <h3 class="sec-t" data-i18n="who_title"></h3>
-    <div class="who">
-      <div class="whoc"><h4 data-i18n="who1_t"></h4><p data-i18n="who1_d"></p><a href="#firma" class="more" data-i18n="nav_firm"></a></div>
-      <div class="whoc"><h4 data-i18n="who2_t"></h4><p data-i18n="who2_d"></p><a href="#osb" class="more" data-i18n="nav_osb"></a></div>
-      <div class="whoc"><h4 data-i18n="who3_t"></h4><p data-i18n="who3_d"></p><a href="#yontem" class="more" data-i18n="nav_method"></a></div>
-    </div>
-    <div class="card mapcard">
-      <div class="maptxt"><h3 class="sec-t" style="margin-top:0" data-i18n="map_title"></h3><p data-i18n="map_d"></p><div id="gridChips" class="chips"></div></div>
+    <div class="sec-h reveal"><h3 data-i18n="f_title"></h3><p data-i18n="f_sub"></p></div>
+    <div class="feats"><a class="feat reveal" href="#firma" data-tab="month"><span class="fic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span><h4 data-i18n="f1t"></h4><p data-i18n="f1d"></p></a><a class="feat reveal" href="#firma" data-tab="res"><span class="fic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M5 7h14"/><path d="M5 7l-3 6a3 3 0 0 0 6 0zM19 7l-3 6a3 3 0 0 0 6 0z"/></svg></span><h4 data-i18n="f2t"></h4><p data-i18n="f2d"></p></a><a class="feat reveal" href="#firma" data-tab="res"><span class="fic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 7-7"/><path d="M15 8h5v5"/></svg></span><h4 data-i18n="f3t"></h4><p data-i18n="f3d"></p></a><a class="feat reveal" href="#firma" data-tab="roadmap"><span class="fic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r=".8"/></svg></span><h4 data-i18n="f4t"></h4><p data-i18n="f4d"></p></a><a class="feat reveal" href="#firma" data-tab="report"><span class="fic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9 14h6M9 17h4"/></svg></span><h4 data-i18n="f5t"></h4><p data-i18n="f5d"></p></a><a class="feat reveal" href="#osb" data-tab=""><span class="fic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span><h4 data-i18n="f6t"></h4><p data-i18n="f6d"></p></a></div>
+    <div class="mapsec reveal">
+      <div class="sec-h"><h3 data-i18n="map_title"></h3><p data-i18n="map_d"></p></div>
       <div id="mapHome" class="map"></div>
+      <div class="maplegend" id="mapLegend"></div>
     </div>
-    <h3 class="sec-t" data-i18n="trust_title"></h3>
-    <div class="trust">
-      <div><b>✓</b><span data-i18n="tr1"></span></div><div><b>✓</b><span data-i18n="tr2"></span></div><div><b>✓</b><span data-i18n="tr3"></span></div><div><b>✓</b><span data-i18n="tr4"></span></div>
+    <div class="sec-h reveal"><h3 data-i18n="faq_title"></h3></div>
+    <div class="faqs"><details class="faq reveal"><summary data-i18n="q1"></summary><p data-i18n="a1"></p></details><details class="faq reveal"><summary data-i18n="q2"></summary><p data-i18n="a2"></p></details><details class="faq reveal"><summary data-i18n="q3"></summary><p data-i18n="a3"></p></details><details class="faq reveal"><summary data-i18n="q4"></summary><p data-i18n="a4"></p></details><details class="faq reveal"><summary data-i18n="q5"></summary><p data-i18n="a5"></p></details><details class="faq reveal"><summary data-i18n="q6"></summary><p data-i18n="a6"></p></details></div>
+    <div class="ctaband reveal">
+      <div><h3 data-i18n="cta_t"></h3><p data-i18n="cta_d"></p></div>
+      <a class="btn primary" href="#firma"><span data-i18n="h_cta_calc"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
 </section>
@@ -151,6 +162,7 @@
 
     <div class="tab" id="tab-res">
       <div id="msgs"></div>
+      <div class="card ready" id="readyCard"></div>
       <div class="kpis">
         <div class="kpi main"><div class="l" data-i18n="k_embedded"></div><div class="v" id="kEmb">-</div><div class="s" id="kRange"></div></div>
         <div class="kpi"><div class="l" data-i18n="k_default"></div><div class="v" id="kDef">-</div><div class="s">tCO2e/t</div></div>
@@ -278,7 +290,7 @@
       <div class="card"><h2 data-i18n="o_action"></h2><div id="osbAction"></div></div>
     </div>
     <div class="card"><h2 data-i18n="o_rank"></h2><div class="tscroll"><table id="osbTable"></table></div></div>
-    <div class="card mapcard"><div class="maptxt"><h3 class="sec-t" style="margin-top:0" data-i18n="map_title"></h3><p data-i18n="map_d"></p></div><div id="mapOsb" class="map"></div></div>
+    <div class="mapsec"><div class="sec-h"><h3 data-i18n="map_title"></h3><p data-i18n="map_d"></p></div><div id="mapOsb" class="map"></div></div>
   </div>
 </section>
 
@@ -310,6 +322,8 @@
 <script src="js/i18n.js"></script>
 <script src="js/i18n_v3.js"></script>
 <script src="js/i18n_v4.js"></script>
+<script src="js/i18n_v5.js"></script>
+<script src="js/mapdata.js"></script>
 <script src="vendor/xlsx.mini.min.js"></script>
 <script src="js/tools.js"></script>
 <script src="js/roadmap.js"></script>
@@ -320,5 +334,6 @@
 <script src="js/app_v3.js"></script>
 <script src="js/app_v4.js"></script>
 <script src="js/tour.js"></script>
+<script src="js/app_v5.js"></script>
 </body>
 </html>

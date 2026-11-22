@@ -6,6 +6,8 @@ const TL = require('../js/tools.js');
 const T = require('../js/i18n.js');
 const V3 = require('../js/i18n_v3.js');
 const V4 = require('../js/i18n_v4.js');
+const V5 = require('../js/i18n_v5.js');
+const TOUR = require('../js/tour.js');
 
 const F = { gas: D.fuels.gas.ncv * D.fuels.gas.ef, diesel: D.fuels.diesel.ncv * D.fuels.diesel.ef, lpg: D.fuels.lpg.ncv * D.fuels.lpg.ef, coal: D.fuels.coal.ncv * D.fuels.coal.ef, preInt: 0.2 };
 const p = [380, 400, 430, 420, 440, 410, 390, 350, 430, 450, 460, 440];
@@ -70,5 +72,7 @@ test('Tüm diller aynı metin anahtarlarına sahip', () => {
     assert.deepStrictEqual(Object.keys(T[l]).sort(), Object.keys(T.tr).sort());
     assert.deepStrictEqual(Object.keys(V3.ADD[l]).sort(), Object.keys(V3.ADD.tr).sort());
     assert.deepStrictEqual(Object.keys(V4.ADD[l]).sort(), Object.keys(V4.ADD.tr).sort());
+    assert.deepStrictEqual(Object.keys(V5.ADD[l]).sort(), Object.keys(V5.ADD.tr).sort());
+    assert.deepStrictEqual(Object.keys(TOUR[l]).sort(), Object.keys(TOUR.tr).sort());
   }
 });

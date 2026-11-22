@@ -1,6 +1,13 @@
-# Yeşil Pusula - v4 (Beta)
+# Yeşil Pusula - v5 (Beta)
 
 Türk Dünyası KOBİ'leri için ortak karbon ve enerji verimliliği platformu (Türk Forum 2026 finalisti).
+
+## v5: görsel yenileme
+- Koyu (varsayılan) ve açık tema; Inter ve Space Grotesk yazı tipleri (yerel, internetsiz).
+- Ana sayfada canlı hızlı SKDM hesabı (ürün, ihracat, emisyon, yıl), özellikler, SSS, harekete geçirici bölüm.
+- Gerçek coğrafyalı Orta Koridor haritası (Natural Earth 1:50m, Mercator), Türk Devletleri Teşkilatı üyeleri, ülke şebeke faktörleri.
+- Firma panelinde SKDM hazırlık skoru (0-100) ve sıradaki adım.
+- Tanıtım turu (8 adım, 4 dil).
 
 ## v4: tam ürün
 - **Ana sayfa:** problem, kaynaklı göstergeler (Eurostat, ASO, Avrupa Komisyonu, AB ETS Direktifi), nasıl çalışır, kimler için, Orta Koridor haritası.
@@ -31,7 +38,7 @@ Türk Dünyası KOBİ'leri için ortak karbon ve enerji verimliliği platformu (
 `node --test tests/engine.test.js tests/tools.test.js tests/roadmap.test.js` (Node 18+). 23 test: AB varsayılan maliyet örneği, kapsam kuralları, yıl takvimi, hatalı girdiler, belirsizlik, güneş senaryosu, en az 5 firma kuralı, SHA-256, aylık toplam ve anomali kontrolü, CSV okuma, tedarikçi mektubu, AB veri dosyası, dil anahtarları, projeksiyon, önlemler, MACC, OSB toplamları.
 
 ## Lisanslar
-Excel okuma/yazma için SheetJS Community Edition 0.18.5 (Apache 2.0, vendor klasöründe).
+Excel okuma/yazma için SheetJS Community Edition 0.18.5 (Apache 2.0, vendor klasöründe). Inter ve Space Grotesk yazı tipleri SIL Open Font License (fonts klasöründe). Harita verisi: Natural Earth (kamu malı), world-atlas paketi.
 
 ## Not
 Örnek tesis verileri kurgusaldır. Resmi CBAM beyanı akredite doğrulayıcı onayı gerektirir.

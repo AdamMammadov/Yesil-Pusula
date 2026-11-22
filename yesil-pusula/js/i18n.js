@@ -4,7 +4,7 @@
     tr: {
       locale: 'tr-TR',
       subtitle: 'Türk Dünyası KOBİ’leri için ortak karbon ve enerji verimliliği platformu',
-      badge: 'Beta · v4',
+      badge: 'Beta · v5',
       banner: 'Demo: örnek tesis verileri kurgusaldır. Emisyon faktörleri ve CBAM parametreleri kaynaklıdır (Yöntem sayfası). Resmi CBAM beyanı akredite doğrulayıcı onayı gerektirir.',
       s_facility: 'Tesis ve ürün', company: 'Firma adı', country: 'Üretim ülkesi',
       c_TR: 'Türkiye', c_AZ: 'Azerbaycan', c_KZ: 'Kazakistan', c_UZ: 'Özbekistan', c_KG: 'Kırgızistan',
@@ -49,7 +49,7 @@
     az: {
       locale: 'az-Latn-AZ',
       subtitle: 'Türk dünyası KOBİ-ləri üçün ortaq karbon və enerji səmərəliliyi platforması',
-      badge: 'Beta · v4',
+      badge: 'Beta · v5',
       banner: 'Demo: nümunə müəssisə məlumatları şərtidir. Emissiya faktorları və CBAM parametrləri mənbəlidir (Metodologiya səhifəsi). Rəsmi CBAM bəyannaməsi akkreditə olunmuş verifikatorun təsdiqini tələb edir.',
       s_facility: 'Müəssisə və məhsul', company: 'Şirkətin adı', country: 'İstehsal ölkəsi',
       c_TR: 'Türkiyə', c_AZ: 'Azərbaycan', c_KZ: 'Qazaxıstan', c_UZ: 'Özbəkistan', c_KG: 'Qırğızıstan',
@@ -94,7 +94,7 @@
     kk: {
       locale: 'kk-KZ',
       subtitle: 'Түркі әлемінің ШОБ-тарына арналған ортақ көміртек және энергия тиімділігі платформасы',
-      badge: 'Beta · v4',
+      badge: 'Beta · v5',
       banner: 'Демо: үлгі кәсіпорын деректері шартты. Шығарындылар коэффициенттері мен CBAM параметрлерінің дереккөздері көрсетілген (Әдістеме беті). Ресми CBAM декларациясы аккредиттелген верификатордың растауын талап етеді.',
       s_facility: 'Кәсіпорын және өнім', company: 'Компания атауы', country: 'Өндіріс елі',
       c_TR: 'Түркия', c_AZ: 'Әзербайжан', c_KZ: 'Қазақстан', c_UZ: 'Өзбекстан', c_KG: 'Қырғызстан',
@@ -139,7 +139,7 @@
     en: {
       locale: 'en-GB',
       subtitle: 'Shared carbon and energy-efficiency platform for SMEs of the Turkic world',
-      badge: 'Beta · v4',
+      badge: 'Beta · v5',
       banner: 'Demo: the sample facility data is fictional. Emission factors and CBAM parameters are sourced (see the Method page). An official CBAM declaration requires verification by an accredited verifier.',
       s_facility: 'Facility and product', company: 'Company name', country: 'Country of production',
       c_TR: 'Türkiye', c_AZ: 'Azerbaijan', c_KZ: 'Kazakhstan', c_UZ: 'Uzbekistan', c_KG: 'Kyrgyzstan',

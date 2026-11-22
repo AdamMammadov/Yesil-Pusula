@@ -13,6 +13,8 @@
   function keur(v) { return Math.abs(v) >= 1e6 ? '€' + fmt(v / 1e6, 1) + 'M' : '€' + fmt(v / 1000, 0) + 'k'; }
   function pctTxt(x, d) { return A.lang() === 'tr' ? '%' + fmt(x * 100, d || 0) : fmt(x * 100, d || 0) + '%'; }
 
+  window.YP_V4 = { sel: null };
+
   /* ---------------- yönlendirme ---------------- */
   var VIEWS = { home: 'home', firma: 'firm', osb: 'osb', yontem: 'method' };
   function route() {
@@ -34,7 +36,7 @@
   }
   function txt(x, y, s, o) {
     o = o || {};
-    return '<text x="' + x + '" y="' + y + '" font-size="' + (o.size || 11) + '" fill="' + (o.fill || '#5c6b7a') + '"' + (o.anchor ? ' text-anchor="' + o.anchor + '"' : '') + (o.weight ? ' font-weight="' + o.weight + '"' : '') + '>' + esc(s) + '</text>';
+    return '<text x="' + x + '" y="' + y + '" font-size="' + (o.size || 11) + '" style="fill:' + (o.fill || 'var(--text3)') + '"' + (o.anchor ? ' text-anchor="' + o.anchor + '"' : '') + (o.weight ? ' font-weight="' + o.weight + '"' : '') + '>' + esc(s) + '</text>';
   }
 
   /* Projeksiyon çizgi grafiği */
@@ -48,25 +50,25 @@
     var g = '';
     for (var k = 0; k <= 4; k++) {
       var v = max * k / 4, y = Y(v);
-      g += '<line x1="' + L + '" x2="' + (W - Rm) + '" y1="' + y + '" y2="' + y + '" stroke="#e8edf2"/>' + txt(L - 6, y + 4, keur(v), { anchor: 'end', size: 10.5 });
+      g += '<line x1="' + L + '" x2="' + (W - Rm) + '" y1="' + y + '" y2="' + y + '" class="gl"/>' + txt(L - 6, y + 4, keur(v), { anchor: 'end', size: 10.5 });
     }
     p.years.forEach(function (yr, i) { g += txt(X(i), H - 8, String(yr.year), { anchor: 'middle', size: 10.5 }); });
     function line(key, col, dash, wdt) {
       var d = p.years.map(function (yr, i) { return (i ? 'L' : 'M') + X(i).toFixed(1) + ' ' + Y(yr[key]).toFixed(1); }).join(' ');
       var dots = p.years.map(function (yr, i) {
-        return '<circle cx="' + X(i).toFixed(1) + '" cy="' + Y(yr[key]).toFixed(1) + '" r="3.2" fill="' + col + '"><title>' + yr.year + ': ' + eur(yr[key]) + '</title></circle>';
+        return '<circle cx="' + X(i).toFixed(1) + '" cy="' + Y(yr[key]).toFixed(1) + '" r="3.2" style="fill:' + col + '"><title>' + yr.year + ': ' + eur(yr[key]) + '</title></circle>';
       }).join('');
-      return '<path d="' + d + '" fill="none" stroke="' + col + '" stroke-width="' + (wdt || 2.6) + '"' + (dash ? ' stroke-dasharray="6 4"' : '') + '/>' + dots;
+      return '<path d="' + d + '" fill="none" style="stroke:' + col + '" stroke-width="' + (wdt || 2.6) + '"' + (dash ? ' stroke-dasharray="6 4"' : '') + '/>' + dots;
     }
     var area = 'M' + X(0) + ' ' + Y(p.years[0].def) + ' ' + p.years.map(function (yr, i) { return 'L' + X(i).toFixed(1) + ' ' + Y(yr.def).toFixed(1); }).join(' ') +
       ' L' + X(n - 1) + ' ' + Y(p.years[n - 1].act) + ' ' + p.years.slice().reverse().map(function (yr, i) { return 'L' + X(n - 1 - i).toFixed(1) + ' ' + Y(yr.act).toFixed(1); }).join(' ') + ' Z';
-    g += '<path d="' + area + '" fill="#2E8B57" opacity=".08"/>';
-    g += line('def', '#C8553D') + line('act', '#2A7F8E');
-    if (opts.after) g += line('after', '#2E8B57', true, 2.2);
-    var lg = [['#C8553D', t('proj_def')], ['#2A7F8E', t('proj_act')]];
-    if (opts.after) lg.push(['#2E8B57', t('proj_after')]);
+    g += '<path d="' + area + '" style="fill:var(--good)" opacity=".10"/>';
+    g += line('def', 'var(--def)') + line('act', 'var(--act)');
+    if (opts.after) g += line('after', 'var(--good)', true, 2.2);
+    var lg = [['var(--def)', t('proj_def')], ['var(--act)', t('proj_act')]];
+    if (opts.after) lg.push(['var(--good)', t('proj_after')]);
     var lx = L;
-    lg.forEach(function (l) { g += '<rect x="' + lx + '" y="8" width="14" height="4" rx="2" fill="' + l[0] + '"/>' + txt(lx + 19, 13.5, l[1], { size: 11, fill: '#1b2632' }); lx += 30 + l[1].length * 6.2; });
+    lg.forEach(function (l) { g += '<rect x="' + lx + '" y="8" width="14" height="4" rx="2" style="fill:' + l[0] + '"/>' + txt(lx + 19, 13.5, l[1], { size: 11, fill: 'var(--text)' }); lx += 30 + l[1].length * 6.2; });
     return svg(W, H, g, t('proj_title'));
   }
 
@@ -142,6 +144,7 @@
       $('rmr' + i).classList.toggle('off', !measures[i].on);
     });
     var sel = R.evaluate(r, measures.filter(function (m) { return m.on; }), c);
+    window.YP_V4.sel = sel.sum;
     $('rmSum').innerHTML = esc(t('rm_sum_text', {
       capex: eur(sel.sum.capex), net: eur(sel.sum.netAnnual), pb: sel.sum.payback === null ? '-' : fmt(sel.sum.payback, 1) + ' ' + t('years'),
       from: fmt(r.embedded, 3), to: fmt(sel.sum.embeddedAfter, 3), co2: fmt(sel.sum.co2Total, 0)
@@ -153,6 +156,7 @@
     var p0 = R.projection(r, { schedule: $('projSched').value });
     $('projChart').innerHTML = projChart(p0, {});
     $('projSum').innerHTML = projSummary(p0, false);
+    if (window.YP_V5) window.YP_V5.renderReady();
   }
 
   function maccChart(blocks, price) {
@@ -164,37 +168,24 @@
     var X = function (v) { return L + (W - L - Rm) * v / total; };
     var Y = function (v) { return T + (H - T - B) * (hi - v) / (hi - lo); };
     var g = '';
-    [lo, lo / 2, 0, hi / 2, hi].forEach(function (v) { var y = Y(v); g += '<line x1="' + L + '" x2="' + (W - Rm) + '" y1="' + y + '" y2="' + y + '" stroke="' + (v === 0 ? '#9aa8b6' : '#eef2f6') + '"/>' + txt(L - 6, y + 4, fmt(v, 0), { anchor: 'end', size: 10.5 }); });
+    [lo, lo / 2, 0, hi / 2, hi].forEach(function (v) { var y = Y(v); g += '<line x1="' + L + '" x2="' + (W - Rm) + '" y1="' + y + '" y2="' + y + '" class="' + (v === 0 ? 'gl0' : 'gl') + '"/>' + txt(L - 6, y + 4, fmt(v, 0), { anchor: 'end', size: 10.5 }); });
     blocks.forEach(function (b) {
       var x0 = X(b.x0), x1 = X(b.x1), y0 = Y(Math.max(0, b.cost)), y1 = Y(Math.min(0, b.cost));
-      var col = b.cost < 0 ? '#2E8B57' : b.cost < price ? '#D9A13B' : '#C8553D';
+      var col = b.cost < 0 ? 'var(--good)' : b.cost < price ? 'var(--warn)' : 'var(--def)';
       var idx = measures.findIndex(function (m) { return m.id === b.id; }) + 1;
-      g += '<rect x="' + (x0 + 1).toFixed(1) + '" y="' + y0.toFixed(1) + '" width="' + Math.max(2, x1 - x0 - 2).toFixed(1) + '" height="' + Math.max(1, y1 - y0).toFixed(1) + '" fill="' + col + '" rx="2"><title>' + esc(t('m_' + b.id)) + ': ' + fmt(b.cost, 0) + ' €/tCO2e, ' + fmt(b.x1 - b.x0, 0) + ' tCO2e</title></rect>';
-      g += txt((x0 + x1) / 2, b.cost < 0 ? y1 + 14 : y0 - 5, String(idx), { anchor: 'middle', size: 12, weight: 700, fill: '#1b2632' });
+      g += '<rect x="' + (x0 + 1).toFixed(1) + '" y="' + y0.toFixed(1) + '" width="' + Math.max(2, x1 - x0 - 2).toFixed(1) + '" height="' + Math.max(1, y1 - y0).toFixed(1) + '" style="fill:' + col + '" rx="2"><title>' + esc(t('m_' + b.id)) + ': ' + fmt(b.cost, 0) + ' €/tCO2e, ' + fmt(b.x1 - b.x0, 0) + ' tCO2e</title></rect>';
+      g += txt((x0 + x1) / 2, b.cost < 0 ? y1 + 14 : y0 - 5, String(idx), { anchor: 'middle', size: 12, weight: 700, fill: 'var(--head)' });
     });
     var yp = Y(price);
-    g += '<line x1="' + L + '" x2="' + (W - Rm) + '" y1="' + yp + '" y2="' + yp + '" stroke="#C8553D" stroke-dasharray="6 4" stroke-width="1.6"/>' + txt(W - Rm, yp - 5, t('macc_price') + ' €' + fmt(price, 2), { anchor: 'end', size: 11, fill: '#C8553D', weight: 600 });
+    g += '<line x1="' + L + '" x2="' + (W - Rm) + '" y1="' + yp + '" y2="' + yp + '" style="stroke:var(--def)" stroke-dasharray="6 4" stroke-width="1.6"/>' + txt(W - Rm, yp - 5, t('macc_price') + ' €' + fmt(price, 2), { anchor: 'end', size: 11, fill: '#C8553D', weight: 600 });
     g += txt(L, H - 6, '0', { size: 10.5 }) + txt(W - Rm, H - 6, fmt(total, 0) + ' tCO2e/' + t('years').replace(/s$/, ''), { anchor: 'end', size: 10.5 });
-    g += '<text x="12" y="' + (T + (H - T - B) / 2) + '" font-size="10.5" fill="#5c6b7a" text-anchor="middle" transform="rotate(-90 12 ' + (T + (H - T - B) / 2) + ')">€/tCO2e</text>';
+    g += '<text x="12" y="' + (T + (H - T - B) / 2) + '" font-size="10.5" style="fill:var(--text3)" text-anchor="middle" transform="rotate(-90 12 ' + (T + (H - T - B) / 2) + ')">€/tCO2e</text>';
     return svg(W, H, g, t('macc_title'));
   }
 
   /* ---------------- ana sayfa ---------------- */
   function renderHome() {
-    var r = E.calculate(DEMO_INPUT, D);
-    var p = R.projection(r, { schedule: 'law' });
-    var spark = projChart(p, { h: 170 });
-    var y34 = p.years[p.years.length - 1];
-    $('heroCard').innerHTML = '<div class="hc-t">' + esc(t('h_card_title')) + '</div>' +
-      '<div class="hc-row"><span>' + esc(t('h_card_def')) + '</span><b class="d">' + eur(r.deflt.cost_eur) + '</b></div>' +
-      '<div class="hc-row"><span>' + esc(t('h_card_act')) + '</span><b class="a">' + eur(r.actual.cost_eur) + '</b></div>' +
-      '<div class="hc-row big"><span>' + esc(t('h_card_save')) + '</span><b class="g">' + eur(r.saving_eur) + '</b></div>' +
-      '<div class="hc-row"><span>' + esc(t('h_card_2034')) + '</span><b>€' + fmt(y34.defPerT, 0) + ' / €' + fmt(y34.actPerT, 0) + '</b></div>' +
-      '<div class="hc-chart">' + spark + '</div>';
-    $('gridChips').innerHTML = Object.keys(D.grid).map(function (c) {
-      return '<span class="chip"><b>' + esc(t('c_' + c)) + '</b> ' + fmt(D.grid[c].value, 3) + ' tCO2e/MWh</span>';
-    }).join('');
-    $('mapHome').innerHTML = mapSvg();
+    if (window.YP_V5 && window.YP_V5.renderHome) window.YP_V5.renderHome();
   }
 
   /* Orta Koridor haritası */
@@ -235,11 +226,11 @@
       [t('o_now'), eur(o.tot.costNow), 'd'], [t('o_pot'), eur(o.potential), 'g']
     ];
     $('osbKpis').innerHTML = k.map(function (x) { return '<div class="kpi' + (x[2] === 'g' ? ' good' : '') + '"><div class="l">' + esc(x[0]) + '</div><div class="v' + (x[2] === 'd' ? ' dcol' : '') + '">' + x[1] + '</div></div>'; }).join('');
-    var cols = { actual: '#2E8B57', partial: '#D9A13B', none: '#C8553D' };
+    var cols = { actual: 'var(--good)', partial: 'var(--warn)', none: 'var(--def)' };
     var W = 560, x = 0, bar = '';
     ['actual', 'partial', 'none'].forEach(function (s) {
       var w = W * o.counts[s] / o.n;
-      if (w > 0) bar += '<rect x="' + x + '" y="0" width="' + w + '" height="34" fill="' + cols[s] + '"/>' + txt(x + w / 2, 22, String(o.counts[s]), { anchor: 'middle', size: 14, weight: 700, fill: '#fff' });
+      if (w > 0) bar += '<rect x="' + x + '" y="0" width="' + w + '" height="34" style="fill:' + cols[s] + '"/>' + txt(x + w / 2, 22, String(o.counts[s]), { anchor: 'middle', size: 14, weight: 700, fill: '#fff' });
       x += w;
     });
     $('osbReady').innerHTML = svg(W, 34, bar, t('o_ready')) + '<div class="legend">' + ['actual', 'partial', 'none'].map(function (s) {
@@ -254,7 +245,7 @@
         return '<tr><td><b>' + esc(t('o_firm')) + ' ' + r.id + '</b></td><td>' + r.cn + '</td><td class="n">' + fmt(r.export_t, 0) + '</td><td><span class="st ' + r.status + '">' + esc(t('st_' + r.status)) + '</span></td><td class="n">' + fmt(r.costNow, 0) +
           '</td><td><div class="pbar"><i style="width:' + (r.potential / maxPot * 100).toFixed(1) + '%"></i><span>' + fmt(r.potential, 0) + '</span></div></td></tr>';
       }).join('');
-    $('mapOsb').innerHTML = mapSvg();
+    if (window.YP_V5 && window.YP_V5.mapInto) window.YP_V5.mapInto('mapOsb'); else $('mapOsb').innerHTML = mapSvg();
   }
   $('osbYear').addEventListener('change', renderOSB);
 
@@ -280,6 +271,10 @@
     var g = document.querySelector('#rmGrowth + span'); if (g) g.textContent = '%/' + t('years').replace(/s$/, '');
   }
   $('projSched').addEventListener('change', renderRoadmap);
+  $('clear').addEventListener('click', function () {
+    ['projChart', 'projSum', 'projChart2', 'projSum2', 'maccChart', 'rmSum', 'xTable'].forEach(function (id) { $(id).innerHTML = ''; });
+    ['rmc', 'rme', 'rmb', 'rmp', 'rmm'].forEach(function (k) { for (var i = 0; i < measures.length; i++) { var el = $(k + i); if (el) el.textContent = '-'; } });
+  });
 
   var prevRender = window.YP_onRender, prevLang = window.YP_onLang;
   window.YP_onRender = function (r) { if (prevRender) prevRender(r); renderRoadmap(); };

@@ -84,7 +84,7 @@
   function applyLang() {
     document.documentElement.lang = lang === 'kk' ? 'kk' : lang;
     document.querySelectorAll('[data-i18n]').forEach(function (el) { el.textContent = t(el.getAttribute('data-i18n')); });
-    document.querySelectorAll('.lang button').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-lang') === lang); });
+    document.querySelectorAll('.lang button[data-lang]').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-lang') === lang); });
     fillSelects();
     syncProduct(false);
     renderSources();
@@ -170,13 +170,13 @@
       var w = Math.max(2, (W - 10) * v / max);
       var inside = w > W - 90;
       var lx = inside ? x0 + w - 8 : x0 + w + 6;
-      return '<text x="0" y="' + (y + 19) + '" font-size="12" fill="#5c6b7a">' + esc(label) + '</text>' +
-        '<rect x="' + x0 + '" y="' + y + '" width="' + w + '" height="28" rx="5" fill="' + col + '"/>' +
-        '<text x="' + lx + '" y="' + (y + 19) + '" font-size="12.5" font-weight="700" fill="' + (inside ? '#fff' : '#1b2632') + '"' + (inside ? ' text-anchor="end"' : '') + '>' + eur(v) + '</text>';
+      return '<text x="0" y="' + (y + 19) + '" font-size="12" class="ax">' + esc(label) + '</text>' +
+        '<rect x="' + x0 + '" y="' + y + '" width="' + w + '" height="28" rx="5" style="fill:' + col + '"/>' +
+        '<text x="' + lx + '" y="' + (y + 19) + '" font-size="12.5" font-weight="700" class="' + (inside ? 'txw' : 'tx') + '"' + (inside ? ' text-anchor="end"' : '') + '>' + eur(v) + '</text>';
     }
     var svg = '<svg viewBox="0 0 ' + (x0 + W) + ' 92" width="100%" role="img" aria-label="' + esc(t('chart_title')) + '">' +
-      bar(10, a, '#2A7F8E', t('col_actual')) + bar(52, d, '#C8553D', t('col_default')) +
-      '</svg><p style="margin:4px 0 0;font-weight:700;color:#2E8B57;font-size:13.5px">' + esc(t('k_saving')) + ': ' + eur(r.saving_eur) + '</p>';
+      bar(10, a, 'var(--act)', t('col_actual')) + bar(52, d, 'var(--def)', t('col_default')) +
+      '</svg><p style="margin:4px 0 0;font-weight:700;color:var(--good);font-size:13.5px">' + esc(t('k_saving')) + ': ' + eur(r.saving_eur) + '</p>';
     return svg;
   }
 
@@ -208,15 +208,15 @@
     $('benchMin').textContent = t('bench_min', { k: D.minPeers });
     if (!b.ok) { $('benchOut').innerHTML = '<div class="msg warn">' + esc(t('bench_min', { k: D.minPeers })) + '</div>'; return; }
     var lo = Math.min(b.min, r.embedded) * 0.85, hi = Math.max(b.max, r.embedded) * 1.1, W = 560, x = function (v) { return 20 + (W - 40) * (v - lo) / (hi - lo); };
-    var dots = prod.peers.map(function (p) { return '<circle cx="' + x(p) + '" cy="52" r="8" fill="#b9c6d3"/>'; }).join('');
+    var dots = prod.peers.map(function (p) { return '<circle cx="' + x(p) + '" cy="52" r="8" style="fill:var(--text3)" opacity=".55"/>'; }).join('');
     var svg = '<svg viewBox="0 0 ' + W + ' 110" width="100%" role="img">' +
-      '<line x1="20" y1="52" x2="' + (W - 20) + '" y2="52" stroke="#dde4eb" stroke-width="4" stroke-linecap="round"/>' + dots +
-      '<line x1="' + x(b.median) + '" y1="30" x2="' + x(b.median) + '" y2="74" stroke="#5c6b7a" stroke-dasharray="4 3"/>' +
-      '<text x="' + x(b.median) + '" y="92" font-size="12" text-anchor="middle" fill="#5c6b7a">' + esc(t('bench_median')) + ' ' + fmt(b.median, 2) + '</text>' +
-      '<circle cx="' + x(r.embedded) + '" cy="52" r="11" fill="#2A7F8E" stroke="#fff" stroke-width="3"/>' +
-      '<text x="' + x(r.embedded) + '" y="24" font-size="13" font-weight="700" text-anchor="middle" fill="#2A7F8E">' + esc(t('bench_you')) + ' ' + fmt(r.embedded, 2) + '</text>' +
-      '<text x="20" y="108" font-size="11" fill="#5c6b7a">tCO2e/t</text></svg>';
-    $('benchOut').innerHTML = '<p style="font-size:16px;font-weight:600;color:#1F3A5F;margin:0 0 8px">' + esc(t('bench_text', { n: b.n, p: fmt(b.percentile, 0) })) + '</p>' + svg;
+      '<line x1="20" y1="52" x2="' + (W - 20) + '" y2="52" class="gl" stroke-width="4" stroke-linecap="round"/>' + dots +
+      '<line x1="' + x(b.median) + '" y1="30" x2="' + x(b.median) + '" y2="74" style="stroke:var(--text3)" stroke-dasharray="4 3"/>' +
+      '<text x="' + x(b.median) + '" y="92" font-size="12" text-anchor="middle" class="ax">' + esc(t('bench_median')) + ' ' + fmt(b.median, 2) + '</text>' +
+      '<circle cx="' + x(r.embedded) + '" cy="52" r="11" style="fill:var(--act);stroke:var(--surface)" stroke-width="3"/>' +
+      '<text x="' + x(r.embedded) + '" y="24" font-size="13" font-weight="700" text-anchor="middle" style="fill:var(--act)">' + esc(t('bench_you')) + ' ' + fmt(r.embedded, 2) + '</text>' +
+      '<text x="20" y="108" font-size="11" class="ax">tCO2e/t</text></svg>';
+    $('benchOut').innerHTML = '<p style="font-size:16px;font-weight:600;color:var(--head);margin:0 0 8px">' + esc(t('bench_text', { n: b.n, p: fmt(b.percentile, 0) })) + '</p>' + svg;
   }
 
   function sortedJSON(o) {
@@ -244,7 +244,8 @@
       '<table class="cmp"><tr><th></th><th class="n">' + t('col_actual') + '</th><th class="n">' + t('col_default') + '</th></tr>' +
       '<tr><td>' + t('row_emb') + '</td><td class="n a">' + fmt(r.actual.embedded, 3) + ' (' + fmt(r.embedded_lo, 3) + ' - ' + fmt(r.embedded_hi, 3) + ')</td><td class="n d">' + fmt(r.deflt.embedded, 3) + '</td></tr>' +
       '<tr><td>' + t('row_chg') + '</td><td class="n a">' + fmt(r.actual.chargeable, 3) + '</td><td class="n d">' + fmt(r.deflt.chargeable, 3) + '</td></tr>' +
-      '<tr class="tot"><td>' + t('row_cost') + '</td><td class="n a">' + eur(r.actual.cost_eur) + '</td><td class="n d">' + eur(r.deflt.cost_eur) + '</td></tr></table>' +
+      '<tr class="tot"><td>' + t('row_cost') + '</td><td class="n a">' + eur(r.actual.cost_eur) + '</td><td class="n d">' + eur(r.deflt.cost_eur) + '</td></tr>' +
+      '<tr class="tot"><td>' + t('k_saving') + '</td><td class="n" colspan="2" style="color:var(--good);font-weight:700">' + eur(r.saving_eur) + '</td></tr></table>' +
       '<p class="note">' + esc(t('formula', { f: pctL(r.cbam_factor, 1), m: pctL(r.markup, 0) })) + ' ' + esc(t('price')) + ': €' + fmt(r.price, 2) + '/tCO2e.</p>' +
       '<h3 style="font-size:14px;margin-top:14px">' + t('breakdown') + '</h3>' +
       '<table><tr><th>' + t('col_src') + '</th><th class="n">' + t('col_qty') + '</th><th class="n">' + t('col_fac') + '</th><th class="n">' + t('col_t') + '</th><th>' + t('col_kind') + '</th></tr>' + bd + '</table>' +
@@ -265,6 +266,9 @@
   }
 
   function loadDemo() {
+    $('country').value = DEMO.country;
+    $('product').value = DEMO.product;
+    fillRoutes(DEMO.route);
     Object.keys(DEMO).forEach(function (k) { if ($(k)) $(k).value = DEMO[k]; });
     syncProduct(true);
     $('route').value = DEMO.route;
@@ -291,7 +295,7 @@
     $('production_t').focus();
   });
   document.querySelectorAll('.tabs button').forEach(function (b) { b.addEventListener('click', function () { showTab(b.getAttribute('data-tab')); }); });
-  document.querySelectorAll('.lang button').forEach(function (b) {
+  document.querySelectorAll('.lang button[data-lang]').forEach(function (b) {
     b.addEventListener('click', function () {
       lang = b.getAttribute('data-lang');
       try { localStorage.setItem('yp_lang', lang); } catch (e) { /* yok say */ }
@@ -309,7 +313,7 @@
   Object.keys(DEMO).forEach(function (k) { if ($(k)) $(k).value = DEMO[k]; });
   document.documentElement.lang = lang;
   document.querySelectorAll('[data-i18n]').forEach(function (el) { el.textContent = t(el.getAttribute('data-i18n')); });
-  document.querySelectorAll('.lang button').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-lang') === lang); });
+  document.querySelectorAll('.lang button[data-lang]').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-lang') === lang); });
   fillSelects();
   Object.keys(DEMO).forEach(function (k) { if ($(k) && $(k).tagName === 'SELECT') $(k).value = DEMO[k]; });
   fillRoutes(DEMO.route);
