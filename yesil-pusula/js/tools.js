@@ -43,16 +43,28 @@
       var direct = m.gas_m3 * factors.gas + m.diesel_l * factors.diesel + m.lpg_l * factors.lpg + m.coal_t * factors.coal;
       var emb = direct + m.precursor_t * factors.preInt;
       m.intensity = m.production_t > 0 ? emb / m.production_t : null;
+      /* Elektrik çelik/alüminyumda SKDM kapsamına girmez ama fatura hatası yine de yakalanmalı:
+         ton başına elektrik ayrı izlenir. */
+      m.elecIntensity = m.production_t > 0 && m.electricity_mwh > 0 ? m.electricity_mwh / m.production_t : null;
       m.energyNoProd = m.production_t === 0 && (m.electricity_mwh > 0 || m.gas_m3 > 0);
       return m;
     });
-    var vals = months.filter(function (m) { return m.intensity !== null; }).map(function (m) { return m.intensity; }).sort(function (a, b) { return a - b; });
-    var med = vals.length ? (vals.length % 2 ? vals[(vals.length - 1) / 2] : (vals[vals.length / 2 - 1] + vals[vals.length / 2]) / 2) : null;
+    function median(arr) {
+      var v = arr.filter(function (x) { return x !== null; }).sort(function (a, b) { return a - b; });
+      return v.length ? (v.length % 2 ? v[(v.length - 1) / 2] : (v[v.length / 2 - 1] + v[v.length / 2]) / 2) : null;
+    }
+    var med = median(months.map(function (m) { return m.intensity; }));
+    var medElec = median(months.map(function (m) { return m.elecIntensity; }));
     var anomalies = [];
     months.forEach(function (m) {
       if (m.energyNoProd) anomalies.push({ month: m.month, code: 'energy_no_prod' });
-      else if (med && m.intensity !== null && Math.abs(m.intensity - med) / med > 0.25) {
-        anomalies.push({ month: m.month, code: 'outlier', dev: Math.round((m.intensity - med) / med * 100) });
+      else {
+        if (med && m.intensity !== null && Math.abs(m.intensity - med) / med > 0.25) {
+          anomalies.push({ month: m.month, code: 'outlier', dev: Math.round((m.intensity - med) / med * 100) });
+        }
+        if (medElec && m.elecIntensity !== null && Math.abs(m.elecIntensity - medElec) / medElec > 0.25) {
+          anomalies.push({ month: m.month, code: 'elec_outlier', dev: Math.round((m.elecIntensity - medElec) / medElec * 100) });
+        }
       }
       if (m.production_t > 0 && m.precursor_t > 0 && m.precursor_t < m.production_t * 0.9) anomalies.push({ month: m.month, code: 'precursor_low' });
     });
