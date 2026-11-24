@@ -35,7 +35,7 @@ Türk Dünyası KOBİ'leri için ortak karbon ve enerji verimliliği platformu (
 - **Vercel:** vercel.com > Add New > Project > bu klasörü yükleyin (Framework: Other, build komutu yok). Ya da GitHub'a yükleyip Vercel'e bağlayın.
 
 ## Testler
-`node --test tests/engine.test.js tests/tools.test.js tests/roadmap.test.js` (Node 18+). 23 test: AB varsayılan maliyet örneği, kapsam kuralları, yıl takvimi, hatalı girdiler, belirsizlik, güneş senaryosu, en az 5 firma kuralı, SHA-256, aylık toplam ve anomali kontrolü, CSV okuma, tedarikçi mektubu, AB veri dosyası, dil anahtarları, projeksiyon, önlemler, MACC, OSB toplamları.
+`node --test tests/engine.test.js tests/tools.test.js tests/roadmap.test.js` (Node 18+). 24 test: AB varsayılan maliyet örneği, kapsam kuralları, yıl takvimi, hatalı girdiler, belirsizlik, güneş senaryosu, en az 5 firma kuralı, SHA-256, aylık toplam, anomali ve elektrik faturası kontrolü, CSV okuma, tedarikçi mektubu, AB veri dosyası, dil anahtarları, projeksiyon, önlemler, MACC, OSB toplamları.
 
 ## Lisanslar
 Excel okuma/yazma için SheetJS Community Edition 0.18.5 (Apache 2.0, vendor klasöründe). Inter ve Space Grotesk yazı tipleri SIL Open Font License (fonts klasöründe). Harita verisi: Natural Earth (kamu malı), world-atlas paketi.
