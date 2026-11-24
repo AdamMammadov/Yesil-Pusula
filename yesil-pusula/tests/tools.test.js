@@ -35,6 +35,17 @@ test('Hatalı fatura girişi (10 kat doğalgaz) ve üretimsiz enerji yakalanır'
   assert.ok(a.anomalies.some(x => x.month === 8 && x.code === 'energy_no_prod'));
 });
 
+test('Hatalı elektrik faturası (10 kat) SKDM kapsamı dışında olsa da yakalanır', () => {
+  const bad = rows.map(r => ({ ...r }));
+  bad[2].electricity_mwh = bad[2].electricity_mwh * 10;
+  const a = TL.aggregate(bad, F);
+  const e = a.anomalies.find(x => x.month === 3 && x.code === 'elec_outlier');
+  assert.ok(e);
+  assert.ok(e.dev > 800);
+  assert.ok(!a.anomalies.some(x => x.code === 'outlier'));
+  assert.strictEqual(a.anomalies.filter(x => x.code === 'elec_outlier').length, 1);
+});
+
 test('CSV: Türkçe başlık, noktalı virgül ve ondalık virgül okunur', () => {
   const csv = '﻿Ay;Üretim (t);Elektrik (MWh);Doğalgaz (m3);Motorin (L);Öncül (t)\n1;380;45,6;15.500;650;391,4\n2;400;48;15800;650;412\n';
   const r = TL.parseCSV(csv);
